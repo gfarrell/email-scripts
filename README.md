@@ -1,5 +1,19 @@
 # Email Management Scripts
 
+    $ python cli.py --help
+
+    Usage: cli.py [OPTIONS] COMMAND [ARGS]...
+
+    Options:
+      -h, --host TEXT       IMAP server  [required]
+      -u, --user TEXT       username  [required]
+      -p, --password TEXT   password  [required]
+      --debug / --no-debug
+      --help                Show this message and exit.
+
+    Commands:
+      move   moves emails from one folder to another
+
 ## MOVE emails between folders
 
 If you need to move emails from one folder to another in a mailbox, one
@@ -20,21 +34,10 @@ it a little slow. It reports progress every 250 messages.
 
 ### Usage
 
-    $ python move.py --help
-
-    Usage: move.py [OPTIONS]
-
-      moves emails from one folder to another
-
-    Options:
-      -s, --server TEXT    IMAP server  [required]
-      -u, --user TEXT      username  [required]
-      -p, --password TEXT  password  [required]
-      -f, --from TEXT      folder from which to move emails  [required]
-      -t, --to TEXT        folder to which to move emails  [required]
-      --help               Show this message and exit.
-
-So, for example, when moving emails from Gmail's "All Mail" folder, to my newly
+For example, when moving emails from Gmail's "All Mail" folder, to my newly
 created "Archives" folder:
 
-    $ python move.py -s imap.myserver.com -u me -p mypassword -f "[Gmail].All Mail" -t "Archives"
+    $ python cli.py -h imap.server.com -u me move -f "[Gmail].All Mail" -t "Archives"
+
+Leaving out the `-p` password option causes the programme to prompt you for a
+password (which is better than leaving it in plaintext).
